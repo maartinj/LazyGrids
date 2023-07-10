@@ -9,9 +9,10 @@ import SwiftUI
 
 struct HGrid: View {
     let colors:[Color]
+    let rows: [GridItem] = [GridItem(.adaptive(minimum: 50))]
        var body: some View {
         ScrollView(.horizontal) {
-            HStack {
+            LazyHGrid(rows: rows) {
                 ForEach(1..<401) { index in
                     colors[index % colors.count]
                         .overlay(
