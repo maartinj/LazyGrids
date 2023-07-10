@@ -9,9 +9,11 @@ import SwiftUI
 
 struct Flexible: View {
     let colors:[Color]
+//    let columns: [GridItem] = Array(repeating: GridItem(.flexible(), spacing: 0), count: 4)
+    let columns: [GridItem] = [GridItem(.flexible(minimum: 100, maximum: 100)),GridItem(),GridItem(),GridItem(),GridItem(),GridItem()]
     var body: some View {
         ScrollView(.vertical) {
-            VStack {
+            LazyVGrid(columns: columns, spacing: 0) {
                 ForEach(1..<401) { index in
                     colors[index % colors.count]
                         .overlay(
